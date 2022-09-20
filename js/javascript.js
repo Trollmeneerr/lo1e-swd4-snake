@@ -6,13 +6,13 @@ let snakeY = 200;
 let direction = 'null';
 
 function drawBackground(){
-ctx.fillStyle = "black";
-ctx.fillRect(0, 0, 400, 400);
+    ctx.fillStyle = "black";
+    ctx.fillRect(0, 0, 400, 400);
 }
 
 function drawSnake() {
-ctx.fillStyle = "green";
-ctx.fillRect(snakeX, snakeY, 20, 20);
+    ctx.fillStyle = "green";
+c   tx.fillRect(snakeX, snakeY, 20, 20);
 }
 
 function changeDirection(event){
@@ -23,18 +23,39 @@ function changeDirection(event){
     } else if (event.code == 'ArrowRight'){
         direction = 'right';
     }else if (event.code == 'ArrowLeft'){
-        direction = 'left';
+        direction = 'left'; 
     }
 }
+
+
+
+
 function update() {
     if (direction == 'right'){
-        snakeX += 20;
+        if (snakeX < 380){
+            snakeX +=20;
+        }else {
+
+        }
     } else if (direction == 'left'){
-        snakeX -=20;
+        if (snakeX > 0){
+            snakeX -=20;
+        } else {
+
+        }
     } else if (direction == 'up'){
-        snakeY -=20;
+        if (snakeY > 0){
+            snakeY -=20;
+        } else {
+
+            }
+
     } else if (direction == 'down') 
-    {snakeY +=20;
+        {if (snakeY < 380){
+            snakeY +=20;
+        } else {
+
+        }
     }
     addEventListener('keydown',changeDirection);
     drawBackground();
@@ -45,7 +66,7 @@ function update() {
 /*
 drawBackground();
 drawSnake();
-
+changedirection();
 */
 
 setInterval(update, 250);
