@@ -3,7 +3,7 @@ const ctx = canvas.getContext("2d");
 
 let snakeX = 200;
 let snakeY = 200;
-let direction = 'null';
+let direction = null;
 
 function drawBackground(){
     ctx.fillStyle = "black";
@@ -12,7 +12,10 @@ function drawBackground(){
 
 function drawSnake() {
     ctx.fillStyle = "green";
-c   tx.fillRect(snakeX, snakeY, 20, 20);
+    ctx.fillRect(snakeX, snakeY, 20, 20);
+}
+function spawnApple() {
+
 }
 
 function changeDirection(event){
@@ -35,26 +38,26 @@ function update() {
         if (snakeX < 380){
             snakeX +=20;
         }else {
-
+            gameOver(); 
         }
     } else if (direction == 'left'){
         if (snakeX > 0){
             snakeX -=20;
         } else {
-
+            gameOver();
         }
     } else if (direction == 'up'){
         if (snakeY > 0){
             snakeY -=20;
         } else {
-
-            }
+            gameOver();
+        }
 
     } else if (direction == 'down') 
         {if (snakeY < 380){
             snakeY +=20;
         } else {
-
+        gameOver();
         }
     }
     addEventListener('keydown',changeDirection);
@@ -62,7 +65,10 @@ function update() {
     drawSnake();
     
 }
-
+function gameOver(){
+    alert('Game Over');
+    direction = null;
+}
 /*
 drawBackground();
 drawSnake();
