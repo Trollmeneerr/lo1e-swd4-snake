@@ -3,6 +3,8 @@ const ctx = canvas.getContext("2d");
 
 let snakeX = 200;
 let snakeY = 200;
+let foodX = null;
+let foodY = null;
 let direction = null;
 
 function drawBackground(){
@@ -14,10 +16,14 @@ function drawSnake() {
     ctx.fillStyle = "green";
     ctx.fillRect(snakeX, snakeY, 20, 20);
 }
-function spawnApple() {
-
+function spawnFood() {
+    foodX = Math.floor(Math.random()*20)*20;
+    foodY = Math.floor(Math.random()*20)*20;
 }
-
+function drawfood() {
+    ctx.fillStyle = "red";
+    ctx.fillRect(foodX, foodY, 20, 20);
+}
 function changeDirection(event){
     if(event.code == 'ArrowUp') {
         direction = 'up';
@@ -62,8 +68,9 @@ function update() {
     }
     addEventListener('keydown',changeDirection);
     drawBackground();
+    drawfood();
     drawSnake();
-    
+
 }
 function gameOver(){
     alert('Game Over');
@@ -74,5 +81,6 @@ drawBackground();
 drawSnake();
 changedirection();
 */
+spawnFood();
 
 setInterval(update, 250);
